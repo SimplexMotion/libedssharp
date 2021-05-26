@@ -740,6 +740,42 @@ namespace ODEditor
                 PopulateObject();
             }
         }
+
+        /// <summary>
+        /// Helper for renaming the subindices of a selected array. E.g. MyArray will automatically get 
+        /// subindices named MyArray1, MyArray2,...,MyArrayN
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_autoSubIndexLabeling_Click(object sender, EventArgs e)
+        {
+            ODentry parent_register = selectedObject.parent == null ? selectedObject : selectedObject.parent;
+            
+            // TODO(parlove@paxec.se): Which types of registers have subindices?
+            bool parent_has_subindices = ((parent_register.objecttype == ObjectType.ARRAY) || (parent_register.objecttype == ObjectType.REC));
+            if (!parent_has_subindices)
+            {
+                return;
+            }
+
+            // Loop through each subindex and rename them. 
+            // TODO(parlove@paxec.se): Would be neat with a preview/revert feature
+            int sub_index = 0;
+            bool first_iteration = true;
+            foreach(KeyValuePair<ushort, ODentry> entry in parent_register.subobjects)
+            {
+                // TODO(parlove@paxec.se): First entry of an array in CAN is always array length?
+                if (first_iteration)
+                {
+                    first_iteration = false;
+                    continue;
+                }
+                sub_index++;
+                entry.Value.parameter_name = String.Format("{0}{1}", parent_register.parameter_name, sub_index);
+            }
+
+            PopulateSubList();
+        }
     }
 
     public static class ControlExtensions

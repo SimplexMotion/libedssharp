@@ -61,6 +61,7 @@ namespace ODEditor
             this.label23 = new System.Windows.Forms.Label();
             this.textBox_index = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button_autoSubIndexLabeling = new System.Windows.Forms.Button();
             this.textBox_stringLengthMin = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -466,6 +467,7 @@ namespace ODEditor
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button_autoSubIndexLabeling);
             this.groupBox1.Controls.Add(this.textBox_stringLengthMin);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label20);
@@ -503,6 +505,16 @@ namespace ODEditor
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Object settings";
+            // 
+            // button_autoSubIndexLabeling
+            // 
+            this.button_autoSubIndexLabeling.Location = new System.Drawing.Point(485, 109);
+            this.button_autoSubIndexLabeling.Name = "button_autoSubIndexLabeling";
+            this.button_autoSubIndexLabeling.Size = new System.Drawing.Size(178, 23);
+            this.button_autoSubIndexLabeling.TabIndex = 51;
+            this.button_autoSubIndexLabeling.Text = "Automatic Sub Index Labeling";
+            this.button_autoSubIndexLabeling.UseVisualStyleBackColor = true;
+            this.button_autoSubIndexLabeling.Click += new System.EventHandler(this.button_autoSubIndexLabeling_Click);
             // 
             // textBox_stringLengthMin
             // 
@@ -1036,5 +1048,6 @@ namespace ODEditor
         private System.Windows.Forms.TextBox textBox_subIndex;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.Button button_autoSubIndexLabeling;
     }
 }
